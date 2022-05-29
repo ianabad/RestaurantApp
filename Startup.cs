@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RestaurantApp.Data;
+using RestaurantApp.Data.Interfaces;
+using RestaurantApp.Data.SqlRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +35,9 @@ namespace RestaurantApp
                 op.UseMySql(cs, ServerVersion.AutoDetect(cs));
             });
 
-            // services.AddScoped<>(Interface, Repo);
+            // services.AddScoped<Interface, Repo>();
+
+            services.AddScoped<IMenuItemRepo, MenuItemSqlRepo>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
