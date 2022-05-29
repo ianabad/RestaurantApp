@@ -27,27 +27,36 @@ namespace RestaurantApp.Controllers
 
         // GET api/<ReservationsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<ReservationReadDTO> Get(int id)
         {
-            return "value";
+            var result = repo.GetById(id);
+
+            if (result != null)
+            {
+                return result;
+            }
+            return NotFound();
         }
 
         // POST api/<ReservationsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] ReservationCreateDTO value)
         {
+            repo.Create(value);
         }
 
         // PUT api/<ReservationsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] ReservationCreateDTO value)
         {
+            repo.Update(id, value);
         }
 
         // DELETE api/<ReservationsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            repo.Delete(id);
         }
     }
 }

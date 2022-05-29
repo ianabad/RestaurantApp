@@ -34,13 +34,13 @@ namespace RestaurantApp.Data
             };
         }
 
-       /* public Reservation Map(ReservationCreateDTO value)
+        public Reservation Map(ReservationCreateDTO value)
         {
             return new Reservation
             {
                 Name = value.Name,
                 Date = value.Date,
             };
-        }*/
+        }
     }
 }
