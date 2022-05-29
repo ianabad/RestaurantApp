@@ -38,6 +38,7 @@ namespace RestaurantApp
             // services.AddScoped<Interface, Repo>();
 
             services.AddScoped<IMenuItemRepo, MenuItemSqlRepo>();
+            services.AddScoped<IReservationRepo, ReservationSqlRepo>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
